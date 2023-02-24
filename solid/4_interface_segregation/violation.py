@@ -1,4 +1,4 @@
-'''
+"""
 A client should never be forced to implement an interface that it doesn't use,
 or clients shouldn't be forced to depend on methods they do not use.
 
@@ -6,11 +6,11 @@ Keep interfaces small so that users don't end up depending on things they don't
 need.
 
 Several specific interfaces are better than one generic interface.
-'''
+"""
 
-'''
+"""
 Example that violates the Interface Segregation Principle:
-'''
+"""
 class Shape:
     @property
     def area(self):

@@ -1,17 +1,16 @@
-'''
+"""
+Every module should have one, and only one, reason to change.
 Gather together the things that change for the same reasons. Separate things
 that change for different reasons.
 
-Every module should have one, and only one, reason to change.
-
 Rule of thumb: if you can't describe what a function does without using words
 like "then" or "and", you might be violating the SRP.
-'''
+"""
 
-'''
+"""
 Example that doesn't break SRP: we create a separate SumOutputter class and use
 that new class to handle the logic you need to output the data to the user.
-'''
+"""
 import json
 import math
 

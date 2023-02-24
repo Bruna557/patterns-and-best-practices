@@ -1,14 +1,13 @@
-'''
+"""
+Every module should have one, and only one, reason to change.
 Gather together the things that change for the same reasons. Separate things
 that change for different reasons.
 
-Every module should have one, and only one, reason to change.
-
 Rule of thumb: if you can't describe what a function does without using words
 like "then" or "and", you might be violating the SRP.
-'''
+"""
 
-'''
+"""
 Example that violates the Single Responsability Principle:
 
 AreaCalculator handles the logic to output the data.
@@ -19,7 +18,7 @@ provided shapes.
 
 To address this, we can create a separate SumCalculatorOutputter class and use
 that new class to handle the logic we need to output the data to the user.
-'''
+"""
 import math
 
 
@@ -49,7 +48,7 @@ class AreaCalculator:
         return sum(areas)
 
     def output(self):
-        return "Sum of the areas: " + str(self.sum())
+        return f"Sum of the areas: {self.sum()}"
 
 
 area_calculator = AreaCalculator([

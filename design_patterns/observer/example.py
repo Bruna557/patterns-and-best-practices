@@ -26,6 +26,7 @@ class WeatherStation:
 
 
 """Observers"""
+
 class SmartPhone:
     def __init__(self, weather_station):
         """

@@ -1,40 +1,38 @@
-'''
+"""
 Strategy Pattern defines a family of algorithms, it encapsulates each one of
 them and makes them interchangeable (you can plug and play - sometimes use
 algorithm A, sometimes use algorithm B...).
 Strategy lets the algorithm vary independently from the clients that use it (
 you change the algorithm without changing the client).
-'''
-import abc
+"""
+from abc import ABC, abstractmethod
 
 
-class QuackBehavior(abc.ABC): # Abstract strategy
-	@abc.abstractmethod
-	def quack(self):
-		pass
+class QuackBehavior(ABC):
+    @abstractmethod
+    def quack(self) -> None:
+        pass
 
 
-class Duck(abc.ABC):
-	quack_behavior: QuackBehavior
+class Duck:
+    def __init__(self, qb: QuackBehavior) -> None:
+        self.quack_behavior = qb
 
-	def __init__(self, qb: QuackBehavior):
-		self.quack_behavior = qb
-
-	def quack(self):
-		self.quack_behavior.quack()
+    def quack(self) -> None:
+        self.quack_behavior.quack()
 
 
-class SimpleQuack(QuackBehavior): # Concrete strategy
-	def quack(self):
-		print("Quack!")
+class StandardQuack(QuackBehavior):
+    def quack(self) -> None:
+        print("Quack!")
 
 
-class Squeak(QuackBehavior): # Concrete strategy
-	def quack(self):
-		print("Squeak!")
+class Squeak(QuackBehavior):
+    def quack(self) -> None:
+        print("Squeak!")
 
 
-wild_duck = Duck(SimpleQuack())
+wild_duck = Duck(StandardQuack())
 wild_duck.quack()
 
 rubber_duck = Duck(Squeak())

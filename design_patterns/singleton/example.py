@@ -8,10 +8,10 @@ class SingletonClass(object):
             cls.instance = super(SingletonClass, cls).__new__(cls)
         return cls.instance
 
-singleton = SingletonClass()
-new_singleton = SingletonClass()
+s1 = SingletonClass()
+s2 = SingletonClass()
 
-print(singleton is new_singleton)
+print(s1 is s2)
 
-singleton.singl_variable = "Singleton Variable"
-print(new_singleton.singl_variable)
+s1.some_variable = "some value"
+print(s2.some_variable)

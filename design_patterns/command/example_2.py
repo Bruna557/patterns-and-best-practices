@@ -17,7 +17,26 @@ class Command(ABC):
     @abstractmethod
     def unexecute(self):
         pass
+    
 
+# Receivers
+
+class LivingRoomLamp:
+    def turn_on(self):
+        print("Living room light is on")
+
+    def turn_off(self):
+        print("Living room light is off")
+
+
+class LivingRoomAudioSystem:
+    def turn_on(self):
+        print("Living room audio system is on")
+
+    def turn_off(self):
+        print("Living room audio system is off")
+
+# Commands
 
 class TurnLightOn(Command):
     def __init__(self, lamp):
@@ -30,29 +49,47 @@ class TurnLightOn(Command):
         self.lamp.turn_off()
 
 
-class LivingRoomLamp: # Receiver
-    def turn_on(self):
-        print('Living room lamp turned on')
+class TurnAudioSystemOn(Command):
+    def __init__(self, radio_system):
+        self.radio_system = radio_system
 
-    def turn_off(self):
-        print('Living room lamp turned off')
+    def execute(self):
+        self.radio_system.turn_on()
+
+    def unexecute(self):
+        self.radio_system.turn_off()
 
 
-class RemoteControl: # Invoker
+class TurnLightAndAudioSystemOn(TurnLightOn, TurnAudioSystemOn):
+    def __init__(self, lamp, radio_system):
+        self.lamp = lamp
+        self.radio_system = radio_system
+
+    def execute(self):
+        TurnLightOn.execute(self)
+        TurnAudioSystemOn.execute(self)
+
+    def unexecute(self):
+        TurnLightOn.unexecute(self)
+        TurnAudioSystemOn.unexecute(self)
+
+
+# Invoker
+class RemoteControl:
     def command(self, cmd):
         self.cmd = cmd
 
-    def turn_light_on(self):
+    def execute(self):
         self.cmd.execute()
 
-    def turn_light_off(self):
+    def unexecute(self):
         self.cmd.unexecute()
 
 
-if __name__ == "__main__":
-    lamp = LivingRoomLamp()
-    cmd = TurnLightOn(lamp)
-    remote_control = RemoteControl()
-    remote_control.command(cmd)
-    remote_control.turn_light_on()
-    remote_control.turn_light_off()
+lamp = LivingRoomLamp()
+radio = LivingRoomAudioSystem()
+cmd = TurnLightAndAudioSystemOn(lamp, radio)
+remote_control = RemoteControl()
+remote_control.cmd = cmd
+cmd.execute()
+cmd.unexecute()

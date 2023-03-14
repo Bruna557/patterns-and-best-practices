@@ -14,31 +14,45 @@ class Command(ABC):
     def execute(self):
         pass
 
+    @abstractmethod
+    def unexecute(self):
+        pass
 
-class CommandImplementation(Command):
-    def __init__(self, receiver):
-        self.receiver = receiver
+
+class TurnLightOn(Command):
+    def __init__(self, lamp):
+        self.lamp = lamp
 
     def execute(self):
-        self.receiver.perform_action()
+        self.lamp.turn_on()
+
+    def unexecute(self):
+        self.lamp.turn_off()
 
 
-class Receiver:
-    def perform_action(self):
-        print('Action performed in receiver.')
+class LivingRoomLamp: # Receiver
+    def turn_on(self):
+        print('Living room lamp turned on')
+
+    def turn_off(self):
+        print('Living room lamp turned off')
 
 
-class Invoker:
+class RemoteControl: # Invoker
     def command(self, cmd):
         self.cmd = cmd
 
     def execute(self):
         self.cmd.execute()
 
+    def unexecute(self):
+        self.cmd.unexecute()
+
 
 if __name__ == "__main__":
-    receiver = Receiver()
-    cmd = CommandImplementation(receiver)
-    invoker = Invoker()
-    invoker.command(cmd)
-    invoker.execute()
+    lamp = LivingRoomLamp()
+    cmd = TurnLightOn(lamp)
+    remote_control = RemoteControl()
+    remote_control.command(cmd)
+    remote_control.execute()
+    remote_control.unexecute()

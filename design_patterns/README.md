@@ -41,7 +41,7 @@ These design patterns are concerned with class and object composition.
     - (PRO) You can isolate your code from the complexity of a subsystem.
     - (CON) A facade can become a god object coupled to all classes of an app.
 
-    > A god object (sometimes also called an omniscient or all-knowing object) is an object that references a large number of distinct types, has too many unrelated or uncategorized methods, or some combination of both. The god object is an example of an anti-pattern and a code smell.
+> A god object (sometimes also called an omniscient or all-knowing object) is an object that references a large number of distinct types, has too many unrelated or uncategorized methods, or some combination of both. The god object is an example of an anti-pattern and a code smell.
 
 ## Behavioral design patterns
 These design patterns are concerned with communication between objects.
@@ -63,7 +63,8 @@ These design patterns are concerned with communication between objects.
     - (CON) The code may become more complicated since you're introducing a whole new layer between senders and receivers.
 
 ## Notes
-UML arrows:
+### UML arrows:
+
 ![uml arrows](./uml-arrows.png)
 
 - Direct association = has a

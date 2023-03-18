@@ -68,13 +68,14 @@ class Product1:
         return print(f"Products parts: {', '.join(self.parts)}")
 
 
-"""
-The Director is only responsible for executing the building steps in a
-particular sequence. It is helpful when producing products according to a
-specific order or configuration. Strictly speaking, the Director class is
-optional, since the client can control builders directly.
-"""
 class Director:
+    """
+    The Director is only responsible for executing the building steps in a
+    particular sequence. It is helpful when producing products according to a
+    specific order or configuration. Strictly speaking, the Director class is
+    optional, since the client can control builders directly.
+    """
+
     def __init__(self):
         self.builder = None
 

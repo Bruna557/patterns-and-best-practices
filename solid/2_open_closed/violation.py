@@ -1,10 +1,10 @@
 """
 A Module should be open for extension but closed for modification.
+
 Changes to behavior must be made by adding new code instead of modifying
 existing code.
 
-Separe o comportamento extensível por trás de uma interface e inverta as
-dependências.
+Separate extensible behavior behind an interface, and flip the dependencies.
 """
 
 """
@@ -31,7 +31,7 @@ class Circle:
 
 
 class AreaCalculator:
-    def __init__(self, shapes: []):
+    def __init__(self, shapes: list):
         self.shapes = shapes
 
     def sum(self):

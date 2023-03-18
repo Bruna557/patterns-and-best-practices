@@ -1,5 +1,6 @@
 """
 Every module should have one, and only one, reason to change.
+
 Gather together the things that change for the same reasons. Separate things
 that change for different reasons.
 
@@ -26,7 +27,7 @@ class Circle:
 
 
 class AreaCalculator:
-    def __init__(self, shapes: []):
+    def __init__(self, shapes: list):
         self.shapes = shapes
 
     def sum(self):
@@ -50,7 +51,7 @@ class SumOutputter:
           'sum': self.sum,
         }
 
-        return json.dumps(data);
+        return json.dumps(data)
 
 
 area_calculator = AreaCalculator([

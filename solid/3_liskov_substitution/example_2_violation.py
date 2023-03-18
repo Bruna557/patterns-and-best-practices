@@ -9,13 +9,13 @@ class Notification(ABC):
 
 class Email(Notification):
     def notify(self, message, email):
-        print(f'Send {message} to {email}')
+        print(f"Send '{message}' to {email}")
 
 
 class SMS(Notification):
     def notify(self, message, phone):
-        print(f'Send {message} to {phone}')
+        print(f"Send '{message}' to {phone}")
 
 
 notification = SMS()
-notification.notify('Hello', 'john@test.com')
+notification.notify("Hello", "john@test.com")

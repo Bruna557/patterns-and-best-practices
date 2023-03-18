@@ -17,47 +17,47 @@ import math
 
 
 class Square:
-    def __init__(self, len: int):
-        self.length = len
+    def __init__(self, length: float) -> None:
+        self.length = length
 
 
 class Circle:
-    def __init__(self, rad: int):
-        self.radius = rad
+    def __init__(self, radius: float) -> None:
+        self.radius = radius
 
 
 class AreaCalculator:
-    def __init__(self, shapes: list):
+    def __init__(self, shapes: list) -> None:
         self.shapes = shapes
 
-    def sum(self):
+    def sum(self) -> float:
         areas = []
-
         for shape in self.shapes:
             if type(shape) is Square:
                 areas.append(shape.length**2)
-            elif type(shape) is Circle:
+            if type(shape) is Circle:
                 areas.append(math.pi * shape.radius**2)
-
         return sum(areas)
 
 
 class SumOutputter:
-    def __init__(self, sum):
+    def __init__(self, sum) -> None:
         self.sum = sum
 
-    def json_output(self):
-        data = {
-          'sum': self.sum,
-        }
+    def text_output(self) -> str:
+        return f"Sum of the areas: {self.sum()}"
 
+    def json_output(self) -> object:
+        data = {
+            "sum": self.sum
+        }
         return json.dumps(data)
 
 
-area_calculator = AreaCalculator([
-    Square(4),
-    Circle(2)
-])
-sum_of_areas = area_calculator.sum()
-sum_outputter = SumOutputter(sum_of_areas)
-print(sum_outputter.json_output())
+if __name__ == "__main__":
+    area_calculator = AreaCalculator([
+        Square(2),
+        Circle(5)
+    ])
+    sum_outputter = SumOutputter(area_calculator.sum())
+    print(sum_outputter.json_output())
